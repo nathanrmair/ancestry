@@ -1,0 +1,181 @@
+
+.grid-bordered {
+    border-left: 1px solid;
+    border-color: #c9c9c9;
+}
+
+.conversations-panel {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.no-margin {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.conversation-item {
+    background-color: #f2f2f2;
+    margin-top: 2px;
+    border-bottom: 1px solid #aea2a9;
+    border-radius: 2px;
+    height: 60px;
+}
+
+.conversation-preview {
+
+    overflow: hidden;
+}
+
+#conversation-title{
+    font-size: 200%;
+    margin-left: 2%;
+}
+
+.avatar-top{
+    margin-top: 5px;
+    width: 40px;
+    height:40px;
+    border-radius: 50%;
+}
+.avatar {
+    margin-right: 15px;
+}
+
+.avatar img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.no-overflow {
+    overflow: hidden;
+}
+
+.last-message-overflow{
+    overflow: hidden;
+    height:25px;
+}
+#conversation-content{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 400px;
+}
+
+.message-box {
+    text-align: left;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 5px;
+    border: 1px;
+    border-radius: 5px;
+    color: white;
+    overflow-x: auto;
+}
+
+.right{
+    background-color: #00a0df;
+    margin-left: 30px;
+}
+
+.right a{
+    color:white;
+}
+
+.left{
+    background-color: #f5f5f5;
+    color: black;
+    margin-right: 30px;
+}
+
+.left a{
+    color:black;
+}
+
+.new-message{
+    margin: 10px 0;
+}
+
+.no-margins{
+    margin: 0 !important;
+}
+
+.no-padding{
+    padding: 0 !important;
+}
+
+#right-panel{
+    border-left: 1px;
+    border-color: #0e2e42;
+}
+
+.vresize {
+    resize: vertical;
+}
+
+.embedded-image{
+    display: block;
+    margin-top: -10px;
+}
+.embedded-image img{
+    max-width:100%;
+    max-height:100%;
+}
+
+.bottom-message-buttons{
+    padding-top: 5px;
+    margin-right: 10px;
+}
+
+#choose-file-input{
+    line-height: inherit;
+    margin-left: 10px;
+}
+
+#file-chosen{
+    margin-left: 10px;
+}
+
+#send-button-col{
+    padding-top: 10%;
+}
+
+#sidebar.affix-top {
+    position: static;
+    margin-top:30px;
+    width:228px;
+}
+
+#sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:228px;
+}
+
+#message-textarea{
+    margin-bottom: 10px;
+}
+
+.loadMore{
+    text-decoration: underline;
+}
+.loadMore:hover{
+    cursor: pointer;
+}
+
+.user-avatar+span.label-as-badge {
+    position: relative;
+    top: 0px;
+    left: 8px;
+}
+
+.label-as-badge{
+    border-radius: 1em;
+    position: relative;
+    top: -15px;
+    left: 4px;
+}
+
+.hidden{
+    visibility: hidden;
+}

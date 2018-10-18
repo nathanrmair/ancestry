@@ -1,0 +1,78 @@
+@font-face {
+    font-family: map-icons-ttf;
+    src: url('/public/js/dist/fonts/map-icons.ttf');
+}
+
+@font-face {
+    font-family: map-icons-woff;
+    src: url('/public/js/dist/fonts/map-icons.woff');
+}
+
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+    display: inline-block;
+}
+
+#show-all{
+    margin-left: 15px;
+    display: inline-block;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #30aff0;
+    border-left: solid 1px #ccc;
+}
+
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+    color: #1b578a;
+}
+
+#map-row{
+    border: 1px solid black;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #30aff0;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+
+#results-table{
+    margin-top: 3%;
+    visibility: hidden;
+}
+
+#search-row{
+    margin-bottom: 2%;
+}
+
+#no-results-found{
+    color: #30aff0;
+    visibility: hidden;
+    text-align: center;
+    font-size: 150%;
+    font-weight: 700;
+}
+
+.map-icon-label .map-icon{
+    font-size: 27px;
+    color: #151515;
+    line-height: 48px;
+    text-align: center;
+    white-space: nowrap;
+    padding-bottom: 5px;
+}

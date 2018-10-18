@@ -1,0 +1,42 @@
+language: php
+
+php:
+  - 7.0
+
+services:
+  - mysql
+  - elasticsearch
+
+env:
+  global:
+    - AWS_ACCESS_KEY_ID=AKIAIJ4JAGMMR3L3BINA
+    - AWS_DEFAULT_REGION=eu-west-1
+    - secure: FRWok1YXo8NwIhhJJqqR6wxvw+A2Yiu/FBSRIMh2a3xn22Te9X+jB+SkyVNn1urgK3GR4S/nogIQJUHQUF/+tulFoMFvUq96cw3okbR7n/1ed/tb29x2gSnPCzSQJ0fpsAoHUe2a2sNM1USqwKXnbvphLDdwHEqXxRStpSAZJFnOv1cHg7RWRuR8WPkJGWneBHeGHK4unflmtbOjOGoREhzKdXt0A36l+zkIY7ph79p/U1gQAsabzbHQGaJS0f6+U9Ukw9MltUbexXG5mDsTQjvBa0//+M8YFmYuECc99RXmV8zTb7oY6RWqg6n92oM6Q5HqxaYqaa6iEM6rJ/7kAg==
+    - CD_APP_NAME=ancestry CD_DEPLOYMENT_GROUP=developers
+files:
+  - source: /
+    destination: /var/www/ancestry
+
+
+ci:
+  - pip install awscli
+
+before_script:
+  - sudo apt-get update
+  - composer self-update -n
+  - composer install  #downloads vendor
+  - composer install --prefer-dist -n
+  - mysql -e "GRANT ALL ON *.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"  #creating shippable user
+  - mysql -e "create database if not exists sample;" # create database
+  - mysql -e "show databases;" # lists databases
+  - cp .env.testing .env # creates .env file
+  - php artisan key:generate # generates secure key
+  - php artisan config:cache  # caches config (without it laravel throws error that secure key is not there)
+  - php artisan migrate --env=testing #creates database table
+  - php artisan db:seed # seeds database with seeders
+script:
+  - phpunit
+#  - phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+
+after_success:
+  - if [ "$BRANCH" == "newDeploy" ]; then echo "Deploying to AWS"; aws deploy create-deployment --application-name $CD_APP_NAME --github-location repository=georgiosgeorgiadis/ancestry,commitId=$COMMIT --deployment-group-name $CD_DEPLOYMENT_GROUP --ignore-application-stop-failures | python scripts/wait_for_completion.py; fi
